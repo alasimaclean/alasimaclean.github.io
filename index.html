@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العاصمة كلين لعزل الخزانات</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0284c7;
+            --dark-blue: #0f172a;
+            --navy-blue: #1e3a8a;
+            --light-blue: #f0f9ff;
+            --whatsapp-green: #25d366;
+            --white: #ffffff;
+            --gray-light: #f8fafc;
+            --text-dark: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--gray-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 75px; /* مسافة للشريط الثابت السفلي */
+        }
+
+        /* الهيدر */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--navy-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-blue);
+        }
+
+        .header-btn {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* القسم الرئيسي Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-call { background-color: var(--white); color: var(--navy-blue); }
+        .btn-whatsapp { background-color: var(--whatsapp-green); color: var(--white); }
+
+        /* الأقسام العامة */
+        .section {
+            padding: 35px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--navy-blue);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        /* المميزات */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 12px;
+            border-right: 4px solid var(--primary-blue);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-card i { font-size: 1.4rem; color: var(--primary-blue); }
+
+        /* الفيديوهات */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .video-card-header {
+            background-color: var(--light-blue);
+            padding: 12px;
+            font-weight: 700;
+            color: var(--navy-blue);
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background-color: #000;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        /* الصور */
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .photo-item {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* الشريط السفلي الثابت للجوال */
+        .sticky-bar {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: var(--white);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            padding: 10px 15px;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .sticky-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .sticky-call { background-color: var(--navy-blue); color: var(--white); }
+        .sticky-whatsapp { background-color: var(--whatsapp-green); color: var(--white); }
+
+        @media (max-width: 600px) {
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18342701372"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-18342701372');
+    </script>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fa-solid fa-droplet"></i>
+                <span>العاصمة كلين</span>
+            </div>
+            <a href="tel:0583949336" class="header-btn">
+                <i class="fa-solid fa-phone"></i>
+                <span>0583949336</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- الهيرو -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>العاصمة كلين لعزل وغسيل الخزانات</h1>
+            <p>حلول متكاملة لمعالجة التسربات وعزل الخزانات المائي والحراري مع الضمان</p>
+            <div class="hero-cta">
+                <a href="tel:0583949336" class="btn btn-call">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>اتصال مباشر</span>
+                </a>
+                <a href="https://wa.me/966583949336?text=مرحباً،%20أرغب%20في%20الاستفسار%20عن%20خدمة%20عزل%20الخزانات" class="btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>تواصل واتساب</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- المميزات -->
+    <section class="section">
+        <h2 class="section-title">لماذا تختار العاصمة كلين؟</h2>
+        <div class="features-grid">
+            <div class="feature-card"><i class="fa-solid fa-shield-halved"></i><h3>مواد عزل معتمدة</h3></div>
+            <div class="feature-card"><i class="fa-solid fa-certificate"></i><h3>ضمان شامل على الخدمة</h3></div>
+            <div class="feature-card"><i class="fa-solid fa-user-gear"></i><h3>فنيين متخصصين</h3></div>
+            <div class="feature-card"><i class="fa-solid fa-tags"></i><h3>أسعار منافسة ومعاينة</h3></div>
+        </div>
+    </section>
+
+    <!-- الفيديوهات (قبل وبعد) -->
+    <section class="section" style="background-color: var(--light-blue); border-radius: 16px;">
+        <h2 class="section-title">شاهد نتائج العمل (قبل وبعد)</h2>
+        <div class="videos-grid">
+            <div class="video-card">
+                <div class="video-card-header">الخزان قبل العزل</div>
+                <div class="video-wrapper">
+                    <!-- استبدل video1.mp4 برابط الفيديو الأول -->
+                    <video controls muted autoplay loop poster="https://via.placeholder.com/600x340/1e3a8a/ffffff?text=فيديو+قبل+العزل">
+                        <source src="media/videos/before.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-card-header">الخزان بعد العزل</div>
+                <div class="video-wrapper">
+                    <!-- استبدل video2.mp4 برابط الفيديو الثاني -->
+                    <video controls muted autoplay loop poster="https://via.placeholder.com/600x340/0284c7/ffffff?text=فيديو+بعد+العزل">
+                        <source src="media/videos/after.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الصور الـ 4 -->
+    <section class="section">
+        <h2 class="section-title">معرض الصور الميدانية</h2>
+        <div class="photos-grid">
+            <div class="photo-item">
+                <img src="media/img1.jpeg" alt="صورة 1">
+            </div>
+            <div class="photo-item">
+                <img src="media/img2.jpeg" alt="صورة 2">
+            </div>
+            <div class="photo-item">
+                <img src="media/img3.jpeg" alt="صورة 3">
+            </div>
+            <div class="photo-item">
+                <img src="media/img4.jpeg" alt="صورة 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- الشريط السفلي الثابت -->
+    <div class="sticky-bar">
+        <a href="tel:0583949336" class="sticky-btn sticky-call">
+            <i class="fa-solid fa-phone"></i>
+            <span>اتصل الآن</span>
+        </a>
+        <a href="https://wa.me/966583949336?text=مرحباً،%20أرغب%20في%20الاستفسار%20عن%20خدمة%20عزل%20الخزانات" class="sticky-btn sticky-whatsapp" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>واتساب</span>
+        </a>
+    </div>
+
+</body>
+</html>
